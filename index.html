@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Portfolio</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347; /* Subtle hover effect */
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Introduction */
+        #intro {
+            background-color: #333333;
+            color: #ffffff;
+            padding-top: 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #1a2a6c, #fdbb2d);
+            animation: gradientBG 10s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .intro-left {
+            flex: 1;
+            text-align: center;
+        }
+
+        .intro-right {
+            flex: 1;
+            padding-left: 50px;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .intro-right h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .intro-right p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e55347;
+            transform: scale(1.05);
+        }
+
+        /* About */
+        #about {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Skills */
+        #skills {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Projects */
+        #projects {
+            background-color: #f4f4f4;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        /* Contact */
+        #contact {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        button {
+            background-color: #ff6347;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e55347;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff6347;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .intro-content {
+                flex-direction: column;
+            }
+
+            .intro-right {
+                padding-left: 0;
+                padding-top: 30px;
+                text-align: center;
+            }
+
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <div class="container">
+                <div class="intro-content">
+                    <div class="intro-left">
+                        <img src="/babar.jpeg" alt="John Doe" class="profile-pic">
+                    </div>
+                    <div class="intro-right">
+                        <h1>Babar Khan</h1>
+                        <p class="typing-text">React Native Developer | Mobile App Enthusiast</p>
+                        <p>Crafting seamless mobile experiences with cutting-edge technology</p>
+                        <a href="#contact" class="cta-button">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I'm a passionate React Native developer with 5 years of experience in creating innovative mobile applications. My expertise lies in building cross-platform apps that provide seamless user experiences across iOS and Android devices.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-list">
+                    <div class="skill-item">React Native</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">TypeScript</div>
+                    <div class="skill-item">Redux</div>
+                    <div class="skill-item">GraphQL</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">Agile Methodologies</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="/icon.png" alt="Project 1">
+                        <div class="project-info">
+                            <h3>Fitness Tracker App</h3>
+                            <p>A React Native app for tracking workouts and monitoring fitness progress.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="/ecom.jpeg" alt="Project 2">
+                        <div class="project-info">
+                            <h3>E-commerce Mobile App</h3>
+                            <p>A feature-rich e-commerce app built with React Native and integrated with a custom API.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="/finance.jpeg" alt="Project 3">
+                        <div class="project-info">
+                            <h3>Social Media Dashboard</h3>
+                            <p>A React Native app for managing multiple social media accounts from a single interface.</p>
+                        </div>
+                    </div>
+                     <div class="project-card">
+                        <img src="/icon.png" alt="Project 1">
+                        <div class="project-info">
+                            <h3>Fitness Tracker App</h3>
+                            <p>A React Native app for tracking workouts and monitoring fitness progress.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="/ecom.jpeg" alt="Project 2">
+                        <div class="project-info">
+                            <h3>E-commerce Mobile App</h3>
+                            <p>A feature-rich e-commerce app built with React Native and integrated with a custom API.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="/finance.jpeg" alt="Project 3">
+                        <div class="project-info">
+                            <h3>Social Media Dashboard</h3>
+                            <p>A React Native app for managing multiple social media accounts from a single interface.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Mr-Babarkhan/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/babar-khan-42b729235/" target="_blank"><i class="fab fa-linkedin"></i></a>
+               
+            </div>
+            <p>&copy;
+                <script>
+                    document.write(new Date().getFullYear());
+                </script> @2024 Babar Khan. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
